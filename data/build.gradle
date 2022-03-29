@@ -1,0 +1,44 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0.0"
+
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    flavorDimensions "test"
+    productFlavors {
+        leancloud {
+            buildConfigField "String", "DATA_PROVIDER", '"LeanCloud"'
+        }
+    }
+}
+
+dependencies {
+    //leancloud
+    leancloudImplementation 'cn.leancloud:storage-android:8.0.1'
+    leancloudImplementation 'cn.leancloud:realtime-android:8.0.1'
+
+    api project(':hising_sdk')
+}

@@ -1,0 +1,11 @@
+include ':data'
+include ':KTV'
+gradle.ext.localhising = true
+
+if (gradle.localhising) {
+    gradle.ext.uselocallib = false
+    include ':hising_sdk'
+    project(':hising_sdk').projectDir = new File(settingsDir, '../hising_sdk/hising')
+    include ':httputils'
+    project(':httputils').projectDir = new File(settingsDir, '../hising_sdk/httputils')
+}

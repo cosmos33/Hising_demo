@@ -1,0 +1,72 @@
+if (isModule.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+
+if (getGradle().getStartParameter().getTaskRequests()
+        .toString().contains("firebase")) {
+    apply plugin: 'com.google.gms.google-services'
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        if (isModule.toBoolean()) {
+            applicationId "io.agora.ktv"
+        }
+        versionCode 9
+        versionName "3.5.1"
+
+        consumerProguardFiles "consumer-rules.pro"
+        multiDexEnabled true
+    }
+
+    resourcePrefix "ktv_"
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
+    flavorDimensions "test"
+    productFlavors {
+        leancloud {
+        }
+    }
+
+    if (isModule.toBoolean()) {
+        applicationVariants.all { variant ->
+            variant.outputs.all {
+                outputFileName = "KTV-${versionName}.apk"
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'io.agora.rtc:full-sdk:3.5.1'
+
+    implementation 'jp.wasabeef:glide-transformations:4.0.0'
+    implementation 'com.google.code.gson:gson:2.8.7'
+    implementation 'androidx.palette:palette:1.0.0'
+    api project(':data')
+    api project(':hising_sdk')
+}
