@@ -20,9 +20,9 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/shape_create_button_background"
-                android:text="@string/ktv_create_button"
+                android:text="@string/create_button"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/ktv_title_size" />
+                android:textSize="20dp" />
 
             <View
                 android:layout_width="match_parent"
@@ -45,7 +45,7 @@
                 android:background="@drawable/shape_create_button_background"
                 android:text="加入房间"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/ktv_title_size" />
+                android:textSize="20dp" />
 
 
         </LinearLayout>

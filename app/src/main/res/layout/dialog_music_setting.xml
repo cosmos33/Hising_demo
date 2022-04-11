@@ -12,7 +12,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/ktv_music_menu_dialog_title"
+            android:text="@string/music_menu_dialog_title"
             android:textColor="#EEEEEE" />
 
         <LinearLayout
@@ -25,7 +25,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/ktv_music_menu_dialog_ear"
+                android:text="@string/music_menu_dialog_ear"
                 android:textColor="#9BA2AB" />
 
             <Switch
@@ -45,7 +45,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/ktv_music_menu_dialog_vol1"
+                android:text="@string/music_menu_dialog_vol1"
                 android:textColor="#9BA2AB" />
 
             <SeekBar
@@ -68,7 +68,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/ktv_music_menu_dialog_vol2"
+                android:text="@string/music_menu_dialog_vol2"
                 android:textColor="#9BA2AB" />
 
             <SeekBar

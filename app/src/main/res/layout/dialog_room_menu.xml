@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/shape_create_button_background"
-            android:text="@string/ktv_room_seat_off"
+            android:text="@string/room_seat_off"
             android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

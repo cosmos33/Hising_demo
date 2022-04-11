@@ -18,12 +18,12 @@
         android:name="com.mm.hisingdemo.AppApplication"
         android:allowBackup="false"
         android:icon="@mipmap/launcher"
-        android:label="@string/ktv_app_name"
+        android:label="@string/hising_app_name"
         android:requestLegacyExternalStorage="true"
         android:screenOrientation="portrait"
         android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
-        android:theme="@style/ktv_AppTheme"
+        android:theme="@style/HisingTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:label,android:allowBackup">
         <activity

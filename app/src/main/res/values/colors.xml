@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="ktv_colorPrimary">#161D27</color>
+    <color name="hising_colorPrimary">#161D27</color>
 
-    <color name="ktv_colorAccent">#0088EB</color>
+    <color name="hising_colorAccent">#0088EB</color>
 
-    <color name="ktv_title">#B3FFFFFF</color>
+    <color name="title">#B3FFFFFF</color>
 
-    <color name="ktv_mv_selected">#0088EB</color>
-    <color name="ktv_pitch_nomal">#BFCEE4</color>
+    <color name="mv_selected">#0088EB</color>
+    <color name="pitch_nomal">#BFCEE4</color>
 </resources>
