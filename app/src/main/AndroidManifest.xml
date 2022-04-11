@@ -17,7 +17,7 @@
     <application
         android:name="com.mm.hisingdemo.AppApplication"
         android:allowBackup="false"
-        android:icon="@mipmap/launcher"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/hising_app_name"
         android:requestLegacyExternalStorage="true"
         android:screenOrientation="portrait"

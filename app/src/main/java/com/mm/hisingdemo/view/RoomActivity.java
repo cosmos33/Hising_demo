@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.fanyiran.utils.ToastUtils;
+import com.immomo.svgaplayer.SVGAAnimListenerAdapter;
 import com.mm.hising.client.IHisingClient;
 import com.mm.hising.client.bean.RoomInfo;
 import com.mm.hising.client.bean.RoomUser;
@@ -48,8 +49,11 @@ public class RoomActivity extends DataBindBaseActivity<ActivityRoomBinding> impl
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.fragment_container, HisingClient.INSTANCE.getHisingFragment(new IHisingClient.ShowBtnCallBack() {
             @Override
-            public void showRobButton(boolean show) {
-                mDataBinding.btnRob.setVisibility(show? View.VISIBLE:View.GONE);
+            public void showRobButton(boolean show, IHisingClient.OnRobAnimFinishCallback callback) {
+                mDataBinding.btnRobCountDown.setVisibility(show? View.VISIBLE:View.GONE);
+                if (show) {
+                    robCountdownAnim(callback);
+                }
             }
 
             @Override
@@ -60,9 +64,33 @@ public class RoomActivity extends DataBindBaseActivity<ActivityRoomBinding> impl
         })).commit();
     }
 
+    private void robCountdownAnim(IHisingClient.OnRobAnimFinishCallback callback) {
+        mDataBinding.btnRobCountDown.startSVGAAnimWithListener("rob_count_1.svga",1,new SVGAAnimListenerAdapter(){
+            @Override
+            public void onFinished() {
+                mDataBinding.btnRob.setVisibility(View.VISIBLE);
+                robStartAnim(callback);
+            }
+        });
+    }
+
+    private void robStartAnim(IHisingClient.OnRobAnimFinishCallback callback) {
+        mDataBinding.btnRob.startSVGAAnimWithListener("rob_count_2.svga",1,new SVGAAnimListenerAdapter(){
+            @Override
+            public void onFinished() {
+                mDataBinding.btnRob.setVisibility(View.GONE);
+                mDataBinding.btnRobCountDown.setVisibility(View.GONE);
+                if (callback != null) {
+                    callback.onRobAnimFinish();
+                }
+            }
+        });
+    }
+
+
     @Override
     protected void iniListener() {
-        mDataBinding.btnRob.setOnClickListener(this);
+        mDataBinding.flRob.setOnClickListener(this);
         mDataBinding.btnLight.setOnClickListener(this);
         mDataBinding.btnUnLight.setOnClickListener(this);
     }
@@ -81,16 +109,18 @@ public class RoomActivity extends DataBindBaseActivity<ActivityRoomBinding> impl
             case R.id.btnLight:
                 light();
                 break;
-            case R.id.btnRob:
+            case R.id.flRob:
                 robSing();
                 break;
         }
     }
 
     private void robSing() {
-        HisingClient.INSTANCE.robSing(success -> runOnUiThread(() -> {
-            ToastUtils.showText(success?"抢唱成功":"抢唱失败");
-        }));
+        if (mDataBinding.btnRob.getVisibility() == View.VISIBLE) {
+            HisingClient.INSTANCE.robSing(success -> runOnUiThread(() -> {
+                ToastUtils.showText(success?"抢唱成功":"抢唱失败");
+            }));
+        }
     }
 
     private void light() {
