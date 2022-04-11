@@ -1,5 +1,4 @@
-include ':data'
-include ':KTV'
+include ':app'
 gradle.ext.localhising = true
 
 if (gradle.localhising) {
