@@ -4,7 +4,7 @@ ext {
     minSdkVersion = 21
     targetSdkVersion = 30
 
-    libutilversion = "1.1.6"
+    libutilversion = "1.1.7"
 
     constraintlayout = "1.1.0"
     annotation = "1.1.0"

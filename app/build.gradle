@@ -33,11 +33,6 @@ android {
         dataBinding = true
     }
 
-    flavorDimensions "test"
-    productFlavors {
-        leancloud {
-        }
-    }
 }
 
 dependencies {
@@ -46,6 +41,10 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "androidx.core:core-ktx:${core_ktx}"
     implementation 'com.google.code.gson:gson:2.8.7'
-    implementation 'androidx.palette:palette:1.0.0'
-    api project(':hising_sdk')
+    implementation 'androidx.palette:palette-ktx:1.0.0'
+    if(gradle.localhising){
+        api project(':hising_sdk')
+    }else {
+        implementation "com.immomo.cosmos:hising:1.0.0_04120814"
+    }
 }

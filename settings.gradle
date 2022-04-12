@@ -1,10 +1,15 @@
 include ':app'
-gradle.ext.localhising = true
+gradle.ext.localhising = false
+gradle.ext.buildsdk = false
+gradle.ext.uselocallib = false
 
 if (gradle.localhising) {
-    gradle.ext.uselocallib = false
+    gradle.ext.buildsdk = false
     include ':hising_sdk'
     project(':hising_sdk').projectDir = new File(settingsDir, '../hising_sdk/hising')
-    include ':httputils'
-    project(':httputils').projectDir = new File(settingsDir, '../hising_sdk/httputils')
+}
+if(gradle.uselocallib){
+    gradle.ext.buildsdk = false
+    include ':libutil'
+    project(':libutil').projectDir = new File(settingsDir, '../../../myproject/Libutil/utils')
 }
